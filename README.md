@@ -184,4 +184,4 @@ green-recipe/
 
 ## 📄 라이선스
 
-MIT © 2024 그린레시피
+dktpxmdkalshvps © 2024 그린레시피
