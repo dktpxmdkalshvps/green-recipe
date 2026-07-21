@@ -2,7 +2,6 @@ import { useState, useMemo, useEffect, useCallback } from 'react'
 import { validateRecipeForm } from './utils/validation'
 import {
   PieChart, Pie, Cell, Tooltip, ResponsiveContainer,
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend,
 } from 'recharts'
 
 /* ════════════════════════════════════════════════
@@ -333,7 +332,6 @@ const RecipeDetail = ({ recipe, onBack }) => {
     { name: '단백질',   value: recipe.protein * 4, fill: '#5a8e44' },
     { name: '지방',     value: recipe.fat * 9,     fill: '#c4845a' },
   ]
-  const barData = [{ name: '영양소', 탄수화물: recipe.carb, 단백질: recipe.protein, 지방: recipe.fat }]
 
   return (
     <div style={{ maxWidth: 760, margin: '0 auto', paddingBottom: 80 }} className="fade-in">
