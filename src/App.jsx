@@ -511,13 +511,13 @@ const RecipeListPage = ({ category, setDetail }) => {
   )
 }
 
+const DIET_RECIPES = RECIPES.filter(r => r.category === 'diet')
+const AVG_KCAL = Math.round(DIET_RECIPES.reduce((a, r) => a + r.kcal, 0) / DIET_RECIPES.length)
+
 /* ════════════════════════════════════════════════
    HOME PAGE
 ════════════════════════════════════════════════ */
 const HomePage = ({ setPage, setDetail }) => {
-  const dietRecipes = RECIPES.filter(r => r.category === 'diet')
-  const avgKcal = Math.round(dietRecipes.reduce((a, r) => a + r.kcal, 0) / dietRecipes.length)
-
   return (
     <div>
       {/* Hero Banner */}
@@ -545,8 +545,8 @@ const HomePage = ({ setPage, setDetail }) => {
 
       {/* Stats */}
       <div className="fade-up delay-1" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 32 }}>
-        <StatPill icon="🥗" label="다이어트 레시피" value={dietRecipes.length} />
-        <StatPill icon="🔥" label="평균 칼로리" value={`${avgKcal}kcal`} />
+        <StatPill icon="🥗" label="다이어트 레시피" value={DIET_RECIPES.length} />
+        <StatPill icon="🔥" label="평균 칼로리" value={`${AVG_KCAL}kcal`} />
         <StatPill icon="📚" label="전체 레시피" value={RECIPES.length} />
       </div>
 
@@ -557,7 +557,7 @@ const HomePage = ({ setPage, setDetail }) => {
           <button onClick={() => setPage('diet')} style={{ background: 'none', border: 'none', color: 'var(--green-600)', fontWeight: 700, fontSize: 13, cursor: 'pointer' }}>전체보기 →</button>
         </div>
         <div className="recipe-grid">
-          {dietRecipes.slice(0, 3).map((r, i) => <RecipeCard key={r.id} recipe={r} onClick={setDetail} animDelay={i * 0.08} />)}
+          {DIET_RECIPES.slice(0, 3).map((r, i) => <RecipeCard key={r.id} recipe={r} onClick={setDetail} animDelay={i * 0.08} />)}
         </div>
       </div>
 
