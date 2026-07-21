@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useCallback } from 'react'
+import { validateRecipeForm } from './utils/validation'
 import {
   PieChart, Pie, Cell, Tooltip, ResponsiveContainer,
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend,
@@ -584,7 +585,7 @@ const RegisterPage = () => {
   const [form, setForm] = useState({ name: '', time: '', difficulty: '쉬움', category: 'diet', kcal: '', protein: '', carb: '', fat: '', tags: '', desc: '' })
   const [submitted, setSubmitted] = useState(false)
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
-  const valid = form.name.trim() && form.time
+  const valid = validateRecipeForm(form)
 
   const Input = ({ label, field, type = 'text', placeholder, half = false }) => (
     <div style={{ gridColumn: half ? 'span 1' : 'span 2' }}>
