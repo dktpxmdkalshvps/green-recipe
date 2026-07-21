@@ -227,7 +227,7 @@ const NAV = [
 /* ════════════════════════════════════════════════
    SMALL COMPONENTS
 ════════════════════════════════════════════════ */
-const Tag = ({ label, color = 'green' }) => (
+export const Tag = ({ label, color = 'green' }) => (
   <span style={{
     display: 'inline-block',
     background: color === 'green' ? 'rgba(90,142,68,0.12)' : 'rgba(224,124,58,0.12)',

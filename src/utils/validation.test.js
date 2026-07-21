@@ -1,28 +1,29 @@
-import test from 'node:test';
-import assert from 'node:assert';
+import { describe, it, expect } from 'vitest';
 import { validateRecipeForm } from './validation.js';
 
-test('validateRecipeForm should return true for valid form data', (t) => {
-  const form = { name: 'Valid Recipe', time: '20' };
-  assert.strictEqual(validateRecipeForm(form), true);
-});
+describe('validateRecipeForm', () => {
+  it('should return true for valid form data', () => {
+    const form = { name: 'Valid Recipe', time: '20' };
+    expect(validateRecipeForm(form)).toBe(true);
+  });
 
-test('validateRecipeForm should return false for empty name', (t) => {
-  const form = { name: '', time: '20' };
-  assert.strictEqual(validateRecipeForm(form), false);
-});
+  it('should return false for empty name', () => {
+    const form = { name: '', time: '20' };
+    expect(validateRecipeForm(form)).toBe(false);
+  });
 
-test('validateRecipeForm should return false for name with only whitespace', (t) => {
-  const form = { name: '   ', time: '20' };
-  assert.strictEqual(validateRecipeForm(form), false);
-});
+  it('should return false for name with only whitespace', () => {
+    const form = { name: '   ', time: '20' };
+    expect(validateRecipeForm(form)).toBe(false);
+  });
 
-test('validateRecipeForm should return false for missing time', (t) => {
-  const form = { name: 'Valid Recipe', time: '' };
-  assert.strictEqual(validateRecipeForm(form), false);
-});
+  it('should return false for missing time', () => {
+    const form = { name: 'Valid Recipe', time: '' };
+    expect(validateRecipeForm(form)).toBe(false);
+  });
 
-test('validateRecipeForm should return false for both missing', (t) => {
-  const form = { name: '', time: '' };
-  assert.strictEqual(validateRecipeForm(form), false);
+  it('should return false for both missing', () => {
+    const form = { name: '', time: '' };
+    expect(validateRecipeForm(form)).toBe(false);
+  });
 });
