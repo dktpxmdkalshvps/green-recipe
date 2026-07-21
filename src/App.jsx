@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect, useCallback } from 'react'
 import { validateRecipeForm } from './utils/validation'
+import { calculateBarWidth } from './utils/nutrition'
 import {
   PieChart, Pie, Cell, Tooltip, ResponsiveContainer,
 } from 'recharts'
@@ -259,7 +260,7 @@ const NutritionBar = ({ label, value, max, color }) => (
       <span style={{ fontSize: 12, color: 'var(--text-primary)', fontWeight: 700 }}>{value}g</span>
     </div>
     <div className="nutrition-bar-track">
-      <div className="nutrition-bar-fill" style={{ width: `${Math.min((value / max) * 100, 100)}%`, background: color }} />
+      <div className="nutrition-bar-fill" style={{ width: `${calculateBarWidth(value, max)}%`, background: color }} />
     </div>
   </div>
 )
