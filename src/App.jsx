@@ -478,13 +478,15 @@ const RecipeListPage = ({ category, setDetail }) => {
   const [activeTag, setActiveTag] = useState('전체')
   const tags = category === 'diet' ? DIET_TAGS : NORMAL_TAGS
 
-  const filtered = useMemo(() => RECIPES.filter(r => {
-    if (r.category !== category) return false
-    if (activeTag !== '전체' && !r.tags.includes(activeTag)) return false
+  const filtered = useMemo(() => {
     const q = search.trim().toLowerCase()
-    if (!q) return true
-    return r.name.toLowerCase().includes(q) || r.ingredients.some(i => i.name.toLowerCase().includes(q)) || r.tags.some(t => t.toLowerCase().includes(q))
-  }), [category, activeTag, search])
+    return RECIPES.filter(r => {
+      if (r.category !== category) return false
+      if (activeTag !== '전체' && !r.tags.includes(activeTag)) return false
+      if (!q) return true
+      return r.name.toLowerCase().includes(q) || r.ingredients.some(i => i.name.toLowerCase().includes(q)) || r.tags.some(t => t.toLowerCase().includes(q))
+    })
+  }, [category, activeTag, search])
 
   return (
     <div>
