@@ -694,8 +694,6 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [])
 
-  const pageTitle = { home: '홈', diet: '다이어트 레시피', normal: '일반 레시피', register: '레시피 등록' }
-
   return (
     <div className="app-wrapper">
       {/* ── Header ── */}
