@@ -322,7 +322,7 @@ const RecipeCard = ({ recipe, onClick, animDelay = 0 }) => (
 /* ════════════════════════════════════════════════
    RECIPE DETAIL
 ════════════════════════════════════════════════ */
-const RecipeDetail = ({ recipe, onBack }) => {
+export const RecipeDetail = ({ recipe, onBack }) => {
   const [servings, setServings]   = useState(1)
   const [activeStep, setActiveStep] = useState(0)
 
