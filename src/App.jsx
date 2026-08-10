@@ -8,7 +8,7 @@ import {
 /* ════════════════════════════════════════════════
    DATA
 ════════════════════════════════════════════════ */
-const RECIPES = [
+export const RECIPES = [
   {
     id: 1,
     name: '닭가슴살 아보카도 샐러드',
@@ -472,7 +472,7 @@ export const RecipeDetail = ({ recipe, onBack }) => {
 /* ════════════════════════════════════════════════
    RECIPE LIST PAGE
 ════════════════════════════════════════════════ */
-const RecipeListPage = ({ category, setDetail }) => {
+export const RecipeListPage = ({ category, setDetail }) => {
   const [search, setSearch] = useState('')
   const [activeTag, setActiveTag] = useState('전체')
   const tags = category === 'diet' ? DIET_TAGS : NORMAL_TAGS

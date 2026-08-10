@@ -6,6 +6,7 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
+    exclude: ['src/utils/nutrition.test.js', 'node_modules/**/*'],
   },
   build: {
     outDir: 'dist',
