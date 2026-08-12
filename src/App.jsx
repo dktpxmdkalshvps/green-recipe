@@ -585,6 +585,17 @@ const HomePage = ({ setPage, setDetail }) => {
 export const RegisterPage = () => {
   const [form, setForm] = useState({ name: '', time: '', difficulty: '쉬움', category: 'diet', kcal: '', protein: '', carb: '', fat: '', tags: '', desc: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [csrfToken, setCsrfToken] = useState('')
+
+  useEffect(() => {
+    // Generate a mock CSRF token for structural security
+    if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+      setCsrfToken(crypto.randomUUID())
+    } else {
+      setCsrfToken('mock-csrf-token-' + Math.random().toString(36).substr(2, 9))
+    }
+  }, [])
+
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
   const valid = validateRecipeForm(form)
 
@@ -613,6 +624,7 @@ export const RegisterPage = () => {
       <p style={{ color: 'var(--text-muted)', fontSize: 13, marginBottom: 28 }}>나만의 건강 레시피를 공유해보세요!</p>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+        <input type="hidden" name="csrf_token" value={csrfToken} />
         {/* Name - full width */}
         <div style={{ gridColumn: 'span 2' }}>
           <label style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-secondary)', display: 'block', marginBottom: 6 }}>요리명 *</label>
